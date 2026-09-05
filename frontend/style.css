@@ -19,11 +19,17 @@
     backdrop-filter:blur(10px);
 }
 .logo{
+    display:flex;
+    align-items:center;
     color:white;
     font-size:1.5rem;
     font-weight:bold;
-    margin-left:10px;
     cursor:pointer;
+}
+.dexLogo{
+    height:auto;
+    width:80px;
+    object-fit:contain;
 }
 .nav-links{
     display:flex;
@@ -95,15 +101,29 @@
     justify-content:center;
     align-items:center;
     height:100vh;
-    background-color: grey;
+    position:relative;
+    overflow:hidden;
+}
+.hero-video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index:0;
 }
 .hero-content h1{
     font-size:3rem;
     margin-bottom:10px;
-    background:linear-gradient(45deg,#000000,rgb(72, 67, 94));
+
+      background: linear-gradient(
+        45deg,
+        #ffffff,
+        #C0C0C0,
+        #ffffff
+    );
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: animationHomePageBreathEffect 3s Linear infinite;
+    animation: animationHomePageBreathEffect 3s linear infinite;
 }
 @keyframes animationHomePageBreathEffect{
   0%{
@@ -118,31 +138,74 @@
 }
 
 .hero-content{
+    z-index:2;
     display:flex;
     justify-content:center;
     align-items:center;
     flex-direction:column;
 }
-
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 1;
+}
 .hero-content p{
     font-size:1.2rem;
-    color:black;
+    color:#d1d1d1;
     font-weight:700;
     margin-bottom:25px;
 }
 
 .btn{
     text-decoration:none;
-    color:#000000;
-    background-color:silver;
+    color:#111111;
+    background-color:#FFFFFF;
     padding:8px 15px;
-    border:1px solid #000000;
+    border:1px solid #111111;
     border-radius:6px;
     font-weight:600;
     transition:0.4s;
 }
 .btn:hover{
-    background-color:#000000;
-    color:silver;
+    background-color:#111111;
+    color:#FFFFFF;
     font-weight:700;
+}
+.scroll{
+    position: absolute;
+    bottom:10px;
+    left:50%;
+
+    transform: translateX(-50%);
+    z-index: 2;
+
+    font-size: 2rem;
+    color: #FFFFFF;
+    opacity:0.7;
+    transition: opacity 0.3s ease-in-out;
+
+    animation: scrollArrow 1.5s ease-in-out infinite;
+    cursor: pointer;
+}
+.scroll:hover {
+  opacity:1;
+}
+@keyframes scroll {
+
+    0% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translate(-50%, 10px);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+
 }
